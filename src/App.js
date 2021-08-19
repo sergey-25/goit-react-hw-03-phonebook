@@ -19,6 +19,19 @@ class App extends Component {
     filter: '',
   };
 
+
+
+
+  componentDidMount() {
+    const contacts = localStorage.getItem("contacts");
+    const parsedContacts = JSON.parse(contacts);
+
+    if (parsedContacts) {
+      this.setState({ contacts: parsedContacts });
+    }
+  }
+
+
     formSubmitHandler = data => {
     if (this.state.contacts.find(contact => contact.name.toLowerCase() === data.name.toLowerCase())) {
       alert(`${data.name} is already in contacts`);
@@ -34,6 +47,18 @@ class App extends Component {
     this.setState({ contacts: [{ name: data.name, id: uuidv4(), number: data.number }, ...this.state.contacts,] })
   }
 
+
+
+
+
+  componentDidUpdate(prevProps, prevState) {
+    const prevContacts = prevState.contacts;
+    const updateContacts = this.state.contacts;
+
+    if (updateContacts !== prevContacts) {
+      localStorage.setItem("contacts", JSON.stringify(updateContacts));
+    }
+  }
 
   handleFilterChange = e => {
     if (this.state.contacts.length <= 2) {
