@@ -1,0 +1,22 @@
+.contactForm {
+  display: block;
+}
+
+.contactLabel {
+  font-weight: bold;
+}
+
+.contactInput {
+  width: 327px;
+
+  padding: 10px;
+}
+
+.buttonAdd {
+  padding: 10px 163px;
+  background-color: blue;
+  margin-top: 20px;
+  border-radius: 30px;
+}
+.btnContainer {
+}
